@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronForge | Muscle Building</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        } 
+            
+        
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <nav class="p-6 flex justify-between items-center bg-gray-800 border-b border-orange-500">
+        <h1 class="text-2xl font-bold tracking-tighter text-orange-500">IRON<span class="text-white">FORGE</span></h1>
+        <ul class="flex space-x-6 text-sm uppercase tracking-wide">
+            <li><a href="#" class="hover:text-orange-500">Workouts</a></li>
+            <li><a href="#" class="hover:text-orange-500">Nutrition</a></li>
+            <li><a href="#" class="hover:text-orange-500">Supplements</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-gradient h-[60vh] flex flex-col justify-center items-center text-center px-4">
+        <h2 class="text-5xl md:text-7xl font-black mb-4 uppercase italic">Build Pure Mass</h2>
+        <p class="text-xl text-gray-300 max-w-2xl">The ultimate guide to hypertrophy, progressive overload, and recovery.</p>
+        <button class="mt-8 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full transition">START TRAINING</button>
+    </header>
+
+    <section class="max-w-4xl mx-auto py-16 px-6">
+        <h3 class="text-3xl font-bold mb-8 text-center">Standard Hypertrophy Split</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left bg-gray-800 rounded-lg overflow-hidden">
+                <thead class="bg-orange-600">
+                    <tr>
+                        <th class="p-4">Day</th>
+                        <th class="p-4">Muscle Group</th>
+                        <th class="p-4">Key Exercise</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-700">
+                    <tr>
+                        <td class="p-4">Monday</td>
+                        <td class="p-4 font-bold text-orange-400">Chest & Triceps</td>
+                        <td class="p-4 text-gray-400">Bench Press</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4">Tuesday</td>
+                        <td class="p-4 font-bold text-orange-400">Back & Biceps</td>
+                        <td class="p-4 text-gray-400">Barbell Rows</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4">Wednesday</td>
+                        <td class="p-4 font-bold text-orange-400">Rest</td>
+                        <td class="p-4 text-gray-400">Active Recovery</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4">Thursday</td>
+                        <td class="p-4 font-bold text-orange-400">Legs & Abs</td>
+                        <td class="p-4 text-gray-400">Squats</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="bg-orange-600 py-12 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4 text-black">Bulk Calculator</h3>
+            <p class="text-black mb-6">Enter your weight (kg) to see your target daily protein.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <input id="weightInput" type="number" placeholder="Weight in kg" class="p-3 rounded-lg text-black focus:outline-none">
+                <button onclick="calcProtein()" class="bg-black text-white px-6 py-3 rounded-lg font-bold">Calculate</button>
+            </div>
+            <p id="result" class="mt-6 text-2xl font-black text-black"></p>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 IronForge Fitness. No Pain, No Gain.</p>
+    </footer>
+
+    <script>
+        function calcProtein() {
+            const weight = document.getElementById('weightInput').value;
+            if(weight > 0) {
+                // Formula: ~2.2g of protein per kg of bodyweight
+                const protein = (weight * 2.2).toFixed(1);
+                document.getElementById('result').innerText = `Target: ${protein}g of Protein / day`;
+            } else {
+                alert("Please enter a valid weight!");
+            }
+        }
+    </script>
+</body>
+</html>

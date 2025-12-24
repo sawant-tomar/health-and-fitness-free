@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitality | Your Weight Loss Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="p-6 bg-white shadow-sm flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-indigo-600">VITALITY</h1>
+        <ul class="flex space-x-6 text-gray-600 font-medium">
+            <li><a href="#calculator" class="hover:text-indigo-600">Calculator</a></li>
+            <li><a href="#plans" class="hover:text-indigo-600">Meal Plans</a></li>
+            <li><button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Join Now</button></li>
+        </ul>
+    </nav>
+
+    <header class="gradient-bg text-white py-20 px-10 text-center">
+        <h2 class="text-5xl font-extrabold mb-4">Transform Your Life.</h2>
+        <p class="text-xl opacity-90 mb-8">Science-backed weight loss plans tailored just for you.</p>
+        <a href="#calculator" class="bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition">Start Free Today</a>
+    </header>
+
+    <section id="calculator" class="py-16 px-6 max-w-4xl mx-auto">
+        <div class="bg-white p-8 rounded-2xl shadow-xl">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">Check Your BMI</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-gray-700 mb-2">Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="e.g. 70" class="w-full p-3 border rounded-lg focus:outline-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Height (cm)</label>
+                    <input type="number" id="height" placeholder="e.g. 175" class="w-full p-3 border rounded-lg focus:outline-indigo-500">
+                </div>
+            </div>
+            <button onclick="calculateBMI()" class="w-full mt-6 bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700">Calculate My BMI</button>
+            
+            <div id="result" class="mt-6 text-center hidden">
+                <p class="text-xl">Your BMI is: <span id="bmi-value" class="font-bold text-indigo-600"></span></p>
+                <p id="bmi-category" class="text-gray-600"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="plans" class="py-16 bg-gray-100 px-6">
+        <h3 class="text-3xl font-bold text-center mb-12">Choose Your Path</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="bg-white p-6 rounded-xl shadow-md hover:scale-105 transition">
+                <div class="text-indigo-500 text-4xl mb-4">🥗</div>
+                <h4 class="text-xl font-bold mb-2">Keto Focused</h4>
+                <p class="text-gray-600">High-fat, low-carb recipes designed to burn fat for fuel.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md hover:scale-105 transition border-2 border-indigo-500">
+                <div class="text-indigo-500 text-4xl mb-4">🏃‍♂️</div>
+                <h4 class="text-xl font-bold mb-2">Active Burn</h4>
+                <p class="text-gray-600">High-protein meals balanced for those who exercise daily.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md hover:scale-105 transition">
+                <div class="text-indigo-500 text-4xl mb-4">🌿</div>
+                <h4 class="text-xl font-bold mb-2">Plant-Based</h4>
+                <p class="text-gray-600">Delicious vegan options that keep you full and energized.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 text-center">
+        <p>&copy; 2025 Vitality Health. Always consult a doctor before starting a new diet.</p>
+    </footer>
+
+    <script>
+        function calculateBMI() {
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value / 100;
+            
+            if (weight > 0 && height > 0) {
+                const bmi = (weight / (height * height)).toFixed(1);
+                document.getElementById('bmi-value').innerText = bmi;
+                
+                let category = "";
+                if (bmi < 18.5) category = "Underweight";
+                else if (bmi < 24.9) category = "Normal weight";
+                else if (bmi < 29.9) category = "Overweight";
+                else category = "Obese";
+                
+                document.getElementById('bmi-category').innerText = "Category: " + category;
+                document.getElementById('result').classList.remove('hidden');
+            } else {
+                alert("Please enter valid numbers");
+            }
+        }
+    </script>
+</body>
+</html>
